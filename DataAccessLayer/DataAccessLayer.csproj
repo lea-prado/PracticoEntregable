@@ -30,11 +30,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -53,6 +53,30 @@
     <Compile Include="DALEmployeesNativeSQL.cs" />
     <Compile Include="DALEmployeesMock.cs" />
     <Compile Include="IDALEmployees.cs" />
+    <Compile Include="Model\Employee.cs">
+      <DependentUpon>ModelPractico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\FullTimeEmployee.cs">
+      <DependentUpon>ModelPractico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ModelPractico.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelPractico.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ModelPractico.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelPractico.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\ModelPractico.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ModelPractico.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\PartTimeEmployee.cs">
+      <DependentUpon>ModelPractico.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -61,15 +85,32 @@
       <Name>Shared</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.Config" />
+    <EntityDeploy Include="Model\ModelPractico.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ModelPractico.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\ModelPractico.edmx.diagram">
+      <DependentUpon>ModelPractico.edmx</DependentUpon>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\ModelPractico.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelPractico.edmx</DependentUpon>
+      <LastGenOutput>ModelPractico.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\ModelPractico.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ModelPractico.edmx</DependentUpon>
+      <LastGenOutput>ModelPractico.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
