@@ -131,10 +131,20 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="PracticoNetDataSe.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PracticoNetDataSe.xsd</DependentUpon>
+    </Compile>
     <Compile Include="PracticoNetDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>PracticoNetDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="PracticoNetDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PracticoNetDataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -151,6 +161,17 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="packages.config" />
+    <None Include="PracticoNetDataSe.xsc">
+      <DependentUpon>PracticoNetDataSe.xsd</DependentUpon>
+    </None>
+    <None Include="PracticoNetDataSe.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PracticoNetDataSe.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PracticoNetDataSe.xss">
+      <DependentUpon>PracticoNetDataSe.xsd</DependentUpon>
+    </None>
     <None Include="PracticoNetDataSet.xsc">
       <DependentUpon>PracticoNetDataSet.xsd</DependentUpon>
     </None>
@@ -161,6 +182,17 @@
     </None>
     <None Include="PracticoNetDataSet.xss">
       <DependentUpon>PracticoNetDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="PracticoNetDataSet1.xsc">
+      <DependentUpon>PracticoNetDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="PracticoNetDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>PracticoNetDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="PracticoNetDataSet1.xss">
+      <DependentUpon>PracticoNetDataSet1.xsd</DependentUpon>
     </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

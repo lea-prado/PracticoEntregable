@@ -1,6 +1,4 @@
-﻿using DataAccessLayer.Model;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -21,14 +19,16 @@ namespace PresentationLayerWinForm
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            // TODO: esta línea de código carga datos en la tabla 'practicoNetDataSet.Employee' Puede moverla o quitarla según sea necesario.
-            this.employeeTableAdapter.Fill(this.practicoNetDataSet.Employee);
+            // TODO: esta línea de código carga datos en la tabla 'practicoNetDataSe.Employee' Puede moverla o quitarla según sea necesario.
+            this.employeeTableAdapter.Fill(this.practicoNetDataSe.Employee);
 
         }
-
-        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void AddNewEmployee_Load(object sender, EventArgs e)
         {
-
+            // TODO: esta línea de código carga datos en la tabla 'practicoEntregableDataSet5.EmployeesTPH' Puede moverla o quitarla según sea necesario.
+            this.employeeTableAdapter.Fill(this.practicoNetDataSe.Employee);
+            comboBox1.Items.Add("FullTimeEmployee");
+            comboBox1.Items.Add("ParTimeEmployee");
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -44,12 +44,31 @@ namespace PresentationLayerWinForm
 
         private void Button2_Click(object sender, EventArgs e)
         {
-            using(PracticoNetEntities db = new PracticoNetEntities())
+            DataAccessLayer.DALEmployeesEF en = new DataAccessLayer.DALEmployeesEF();
+            BusinessLogicLayer.BLEmployees bus = new BusinessLogicLayer.BLEmployees(en);
+
+            if (comboBox1.Text == "FullTimeEmployee")
             {
-                Employee emp = new Employee();
-                emp.Name = textBox1.Text;
-                
+                Shared.Entities.FullTimeEmployee fte = new Shared.Entities.FullTimeEmployee()
+                {
+                    Name = textBox1.Text,
+                    StartDate = dateTimePicker1.Value,
+                    Salary = Int32.Parse(textBox2.Text)
+                };
+                bus.AddEmployee(fte);
             }
+            else
+            {
+                Shared.Entities.PartTimeEmployee fte = new Shared.Entities.PartTimeEmployee()
+                {
+                    Name = textBox1.Text,
+                    StartDate = dateTimePicker1.Value,
+                    HourlyRate = Int32.Parse(textBox3.Text)
+                };
+                bus.AddEmployee(fte);
+            }
+            this.Close();
         }
+    
     }
 }
